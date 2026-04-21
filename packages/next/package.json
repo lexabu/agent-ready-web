@@ -1,6 +1,6 @@
 {
   "name": "@agent-ready-web/next",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Next.js App Router adapters for agent-ready-web.",
   "license": "MIT",
   "repository": {
@@ -25,8 +25,7 @@
     "LICENSE"
   ],
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   },
   "sideEffects": false,
   "scripts": {

@@ -1,6 +1,6 @@
 {
   "name": "@agent-ready-web/cloudflare",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Cloudflare Workers adapter for agent-ready-web — handleAgentRoutes for robots/sitemap/well-known paths.",
   "license": "MIT",
   "repository": {
@@ -25,8 +25,7 @@
     "LICENSE"
   ],
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   },
   "sideEffects": false,
   "scripts": {

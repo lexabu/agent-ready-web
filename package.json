@@ -16,7 +16,7 @@
     "format:check": "prettier --check .",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "pnpm -r --filter \"./packages/*\" run build && changeset publish"
+    "release": "pnpm -r --filter \"./packages/*\" run build && pnpm publish -r --filter \"./packages/*\" --access public --no-git-checks"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.9",

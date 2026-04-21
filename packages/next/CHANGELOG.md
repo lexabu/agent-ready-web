@@ -1,5 +1,11 @@
 # @agent-ready-web/next
 
+## 0.1.1
+
+### Patch Changes
+
+- Fix `workspace:*` protocol leaking into the published `dependencies` field, which caused `EUNSUPPORTEDPROTOCOL` when consumers tried to install the package with npm/yarn. The initial 0.1.0 tarballs were published with `npm publish`, which does not rewrite the pnpm workspace protocol to a concrete version range. This release ships with the correct `"agent-ready-web": "^0.1.0"` specifier, published via `pnpm publish`.
+
 ## 0.1.0
 
 ### Minor Changes
