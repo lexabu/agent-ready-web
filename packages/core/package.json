@@ -1,6 +1,6 @@
 {
   "name": "agent-ready-web",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Framework-agnostic agent readiness primitives: robots.txt, sitemap, RFC 8288/9309/9727, agent-skills.",
   "license": "MIT",
   "repository": {
