@@ -1,0 +1,46 @@
+{
+  "name": "agent-ready-web",
+  "version": "0.0.0",
+  "description": "Framework-agnostic agent readiness primitives: robots.txt, sitemap, RFC 8288/9309/9727, agent-skills.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lexabu/agent-ready-web.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/lexabu/agent-ready-web#readme",
+  "bugs": "https://github.com/lexabu/agent-ready-web/issues",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "agent-readiness",
+    "robots-txt",
+    "sitemap",
+    "rfc-8288",
+    "rfc-9309",
+    "rfc-9727",
+    "agent-skills",
+    "ai-agents"
+  ]
+}
