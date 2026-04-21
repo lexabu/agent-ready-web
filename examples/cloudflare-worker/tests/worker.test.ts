@@ -1,10 +1,13 @@
+import { fileURLToPath } from 'node:url';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { unstable_dev, type UnstableDevWorker } from 'wrangler';
+import { unstable_dev, type Unstable_DevWorker } from 'wrangler';
 
-let worker: UnstableDevWorker;
+let worker: Unstable_DevWorker;
+
+const WORKER_ENTRY = fileURLToPath(new URL('../src/index.ts', import.meta.url));
 
 beforeAll(async () => {
-  worker = await unstable_dev('src/index.ts', {
+  worker = await unstable_dev(WORKER_ENTRY, {
     experimental: { disableExperimentalWarning: true },
     logLevel: 'error',
   });

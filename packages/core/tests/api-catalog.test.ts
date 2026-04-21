@@ -7,7 +7,9 @@ describe('apiCatalog', () => {
       linkset: [
         {
           anchor: 'https://apex.test/api/contact',
-          'service-desc': [{ href: '/api/openapi.json', type: 'application/openapi+json;version=3.1' }],
+          'service-desc': [
+            { href: '/api/openapi.json', type: 'application/openapi+json;version=3.1' },
+          ],
         },
       ],
     };

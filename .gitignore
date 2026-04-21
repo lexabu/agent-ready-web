@@ -5,6 +5,7 @@ dist/
 .vercel/
 .wrangler/
 *.tgz
+*.tsbuildinfo
 .DS_Store
 coverage/
 .env*

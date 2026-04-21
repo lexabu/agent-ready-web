@@ -19,7 +19,11 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "files": ["dist", "README.md", "LICENSE"],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "publishConfig": {
     "access": "public",
     "provenance": true
@@ -44,5 +48,11 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "keywords": ["agent-readiness", "nextjs", "app-router", "robots", "sitemap"]
+  "keywords": [
+    "agent-readiness",
+    "nextjs",
+    "app-router",
+    "robots",
+    "sitemap"
+  ]
 }
