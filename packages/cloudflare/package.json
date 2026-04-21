@@ -1,0 +1,46 @@
+{
+  "name": "@agent-ready-web/cloudflare",
+  "version": "0.0.0",
+  "description": "Cloudflare Workers adapter for agent-ready-web — handleAgentRoutes for robots/sitemap/well-known paths.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lexabu/agent-ready-web.git",
+    "directory": "packages/cloudflare"
+  },
+  "homepage": "https://github.com/lexabu/agent-ready-web#readme",
+  "bugs": "https://github.com/lexabu/agent-ready-web/issues",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "agent-ready-web": "workspace:*"
+  },
+  "peerDependencies": {
+    "@cloudflare/workers-types": ">=4.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241106.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": ["agent-readiness", "cloudflare-workers", "robots", "sitemap"]
+}
