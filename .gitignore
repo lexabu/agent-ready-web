@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.next/
+.turbo/
+.vercel/
+.wrangler/
+*.tgz
+.DS_Store
+coverage/
+.env*
+!.env.example
