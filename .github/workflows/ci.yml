@@ -41,6 +41,9 @@ jobs:
       - name: Typecheck
         run: pnpm run typecheck
 
+      - name: Build nextjs example (prereq for e2e)
+        run: pnpm --filter @agent-ready-web/example-nextjs run build
+
       - name: Unit tests (all workspaces)
         run: pnpm run test
 
