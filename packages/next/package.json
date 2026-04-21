@@ -1,0 +1,48 @@
+{
+  "name": "@agent-ready-web/next",
+  "version": "0.0.0",
+  "description": "Next.js App Router adapters for agent-ready-web.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lexabu/agent-ready-web.git",
+    "directory": "packages/next"
+  },
+  "homepage": "https://github.com/lexabu/agent-ready-web#readme",
+  "bugs": "https://github.com/lexabu/agent-ready-web/issues",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "agent-ready-web": "workspace:*"
+  },
+  "peerDependencies": {
+    "next": "^14.0.0 || ^15.0.0"
+  },
+  "devDependencies": {
+    "next": "^15.0.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": ["agent-readiness", "nextjs", "app-router", "robots", "sitemap"]
+}
