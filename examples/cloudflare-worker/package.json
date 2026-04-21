@@ -1,0 +1,21 @@
+{
+  "name": "@agent-ready-web/example-cloudflare-worker",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --port 8787",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "agent-ready-web": "workspace:*",
+    "@agent-ready-web/cloudflare": "workspace:*"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241106.0",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4",
+    "wrangler": "^3.85.0"
+  }
+}
