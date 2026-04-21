@@ -1,0 +1,14 @@
+# Content-Signals: ai-train=yes, search=yes, ai-input=yes
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+Sitemap: https://apexsofteng.com/sitemap.xml
