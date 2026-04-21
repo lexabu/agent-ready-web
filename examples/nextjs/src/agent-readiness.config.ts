@@ -1,9 +1,9 @@
 import { defineAgentReadiness } from 'agent-ready-web';
 
-const SITE_URL = process.env.SITE_URL ?? 'http://localhost:3100';
+const siteUrl = () => process.env.SITE_URL ?? 'http://localhost:3100';
 
 export default defineAgentReadiness({
-  siteUrl: SITE_URL,
+  siteUrl: siteUrl(),
   contentSignals: { 'ai-train': 'yes', search: 'yes', 'ai-input': 'yes' },
   aiCrawlers: {
     GPTBot: 'allow',
@@ -18,12 +18,12 @@ export default defineAgentReadiness({
   sitemap: {
     urls: async () => [
       {
-        url: `${SITE_URL}/`,
+        url: `${siteUrl()}/`,
         lastModified: '2026-04-21',
         changeFrequency: 'weekly',
         priority: 1.0,
       },
-      { url: `${SITE_URL}/about` },
+      { url: `${siteUrl()}/about` },
     ],
   },
   linkHeaders: {
@@ -35,7 +35,7 @@ export default defineAgentReadiness({
   apiCatalog: {
     linkset: [
       {
-        anchor: `${SITE_URL}/api/hello`,
+        anchor: `${siteUrl()}/api/hello`,
         'service-desc': [
           { href: '/api/openapi.json', type: 'application/openapi+json;version=3.1' },
         ],
