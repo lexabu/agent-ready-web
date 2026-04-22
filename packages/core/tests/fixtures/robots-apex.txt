@@ -1,6 +1,5 @@
-# Content-Signals: ai-train=yes, search=yes, ai-input=yes
-
 User-agent: *
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 Allow: /
 Disallow: /api/
 Disallow: /admin

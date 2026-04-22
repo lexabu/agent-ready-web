@@ -136,7 +136,7 @@ import config from '@/agent-readiness.config';
 export const GET = createAgentSkillsRoute(config);
 ```
 
-`createRobots(config)` is also available if you want to use Next.js's built-in `MetadataRoute.Robots` export — but it **cannot emit the `# Content-Signals:` comment** because Next strips comments from the generated robots.txt. Use `createRobotsRoute` when you want the full robots.txt including Content-Signals.
+`createRobots(config)` is also available if you want to use Next.js's built-in `MetadataRoute.Robots` export — but it **cannot emit the `Content-Signal:` directive** because Next's metadata shape has no field for it. Use `createRobotsRoute` when you want the full robots.txt including Content-Signal.
 
 ## Quickstart: Cloudflare Workers
 
@@ -164,7 +164,7 @@ Every field of `AgentReadinessConfig`:
 | Field                            | Type                                            | Purpose                                                                                                                                                                                                                     |
 | -------------------------------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `siteUrl`                        | `string`                                        | Absolute origin of the site, e.g. `'https://example.com'`. Used to build the `Sitemap:` line in robots.txt and any absolute URLs downstream.                                                                                |
-| `contentSignals`                 | `{ 'ai-train', 'search', 'ai-input' }`          | Emitted as a `# Content-Signals:` comment at the top of `robots.txt`. Values are `'yes'` or `'no'`. See [contentsignals.org](https://contentsignals.org/).                                                                  |
+| `contentSignals`                 | `{ 'ai-train', 'search', 'ai-input' }`          | Emitted as a `Content-Signal:` directive inside the `User-agent: *` stanza (per [draft-romm-aipref-contentsignals](https://datatracker.ietf.org/doc/draft-romm-aipref-contentsignals/)). Values are `'yes'` or `'no'`. See [contentsignals.org](https://contentsignals.org/).                                                                  |
 | `aiCrawlers`                     | `Record<string, 'allow' \| 'disallow'>`         | Per-bot dispositions appended to `robots.txt` as `User-agent:` stanzas with `Allow: /` or `Disallow: /`. Common keys: `GPTBot`, `OAI-SearchBot`, `Claude-Web`, `anthropic-ai`, `Google-Extended`, `PerplexityBot`, `CCBot`. |
 | `userAgents`                     | `UserAgentRule[]`                               | Human-equivalent `User-agent:` stanzas with `allow` and `disallow` path arrays (plus optional `crawlDelay`). Typically `[{ name: '*', allow: ['/'], disallow: ['/api/', '/admin'] }]`.                                      |
 | `sitemap`                        | `{ urls: () => Promise<SitemapEntry[]> }`       | Async URL source for `/sitemap.xml`. Each entry has `url` plus optional `lastModified`, `changeFrequency`, `priority`.                                                                                                      |

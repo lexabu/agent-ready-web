@@ -1,5 +1,12 @@
 # @agent-ready-web/cloudflare
 
+## 0.1.2
+
+### Patch Changes
+
+- Updated dependencies
+  - agent-ready-web@0.1.1 (fixes `Content-Signal` emission — directive, not `#` comment; singular, inside `User-agent: *` stanza).
+
 ## 0.1.1
 
 ### Patch Changes

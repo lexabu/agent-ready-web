@@ -23,7 +23,7 @@ describe('createRobots', () => {
 });
 
 describe('createRobotsRoute', () => {
-  it('returns GET handler emitting text/plain robots.txt with Content-Signals header', async () => {
+  it('returns GET handler emitting text/plain robots.txt with Content-Signal directive', async () => {
     const GET = createRobotsRoute({
       siteUrl: 'https://x.test',
       contentSignals: { 'ai-train': 'yes', search: 'yes', 'ai-input': 'yes' },
@@ -35,7 +35,8 @@ describe('createRobotsRoute', () => {
     const res = await GET();
     expect(res.headers.get('content-type')).toBe('text/plain; charset=utf-8');
     const body = await res.text();
-    expect(body).toMatch(/^# Content-Signals:/m);
+    expect(body).toMatch(/^Content-Signal: ai-train=yes, search=yes, ai-input=yes$/m);
+    expect(body).not.toMatch(/^# Content-Signals:/m);
     expect(body).toMatch(/^Sitemap: https:\/\/x\.test\/sitemap\.xml$/m);
   });
 });

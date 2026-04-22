@@ -21,7 +21,7 @@ describe('handleAgentRoutes', () => {
     expect(res).not.toBeNull();
     expect(res!.status).toBe(200);
     expect(res!.headers.get('content-type')).toBe('text/plain; charset=utf-8');
-    expect(await res!.text()).toMatch(/^# Content-Signals:/m);
+    expect(await res!.text()).toMatch(/^Content-Signal: ai-train=yes, search=yes, ai-input=yes$/m);
   });
 
   it('serves /sitemap.xml with application/xml', async () => {

@@ -7,17 +7,22 @@ export interface RobotsTxtInput {
   userAgents: UserAgentRule[];
 }
 
+function formatContentSignal(signals: ContentSignals): string {
+  return `Content-Signal: ai-train=${signals['ai-train']}, search=${signals.search}, ai-input=${signals['ai-input']}`;
+}
+
 export function robotsTxt(input: RobotsTxtInput): string {
   const { siteUrl, contentSignals, aiCrawlers, userAgents } = input;
   const lines: string[] = [];
 
-  lines.push(
-    `# Content-Signals: ai-train=${contentSignals['ai-train']}, search=${contentSignals.search}, ai-input=${contentSignals['ai-input']}`,
-  );
-  lines.push('');
-
   for (const rule of userAgents) {
     lines.push(`User-agent: ${rule.name}`);
+    // Content-Signal is a per-UA-group directive (draft-romm-aipref-contentsignals).
+    // Emit it inside the "*" group so it inherits to all crawlers that don't
+    // have their own stanza. Named AI-crawler stanzas below override via Allow/Disallow.
+    if (rule.name === '*') {
+      lines.push(formatContentSignal(contentSignals));
+    }
     for (const path of rule.allow ?? []) lines.push(`Allow: ${path}`);
     for (const path of rule.disallow ?? []) lines.push(`Disallow: ${path}`);
     if (typeof rule.crawlDelay === 'number') lines.push(`Crawl-delay: ${rule.crawlDelay}`);

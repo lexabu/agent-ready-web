@@ -18,14 +18,31 @@ describe('robotsTxt', () => {
     expect(out.trim()).toBe(fixture);
   });
 
-  it('always emits Content-Signals comment header first', () => {
+  it('emits Content-Signal directive inside the User-agent: * stanza', () => {
     const out = robotsTxt({
       siteUrl: 'https://x.test',
       contentSignals: { 'ai-train': 'no', search: 'yes', 'ai-input': 'no' },
       aiCrawlers: {},
       userAgents: [{ name: '*', allow: ['/'] }],
     });
-    expect(out.startsWith('# Content-Signals: ai-train=no, search=yes, ai-input=no')).toBe(true);
+    // Per draft-romm-aipref-contentsignals: directive (no `#`), singular name,
+    // immediately after the User-agent: line of the group it applies to.
+    expect(out).toMatch(
+      /^User-agent: \*\nContent-Signal: ai-train=no, search=yes, ai-input=no$/m,
+    );
+    expect(out).not.toMatch(/^# Content-Signals:/m);
+  });
+
+  it('does not emit Content-Signal inside non-* stanzas (signals inherit from *)', () => {
+    const out = robotsTxt({
+      siteUrl: 'https://x.test',
+      contentSignals: { 'ai-train': 'no', search: 'yes', 'ai-input': 'no' },
+      aiCrawlers: { GPTBot: 'disallow' },
+      userAgents: [{ name: '*', allow: ['/'] }],
+    });
+    expect(out).toMatch(/^User-agent: GPTBot\nDisallow: \/$/m);
+    // Only one Content-Signal line total.
+    expect(out.match(/Content-Signal:/g)?.length).toBe(1);
   });
 
   it('Sitemap: line uses absolute URL derived from siteUrl', () => {

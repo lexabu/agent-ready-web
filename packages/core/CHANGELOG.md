@@ -1,5 +1,22 @@
 # agent-ready-web
 
+## 0.1.1
+
+### Patch Changes
+
+- Fix `Content-Signal` emission format. The 0.1.0 release emitted `# Content-Signals: …` (plural, as a `#` comment) at the top of `robots.txt`. Cloudflare's `isitagentready.com` scanner and the `draft-romm-aipref-contentsignals` spec expect the **singular** directive `Content-Signal: …` — without the `#` — **inside a `User-agent:` group** (signals inherit to matching UAs). 0.1.0 consumers fail the Content-Signals check on the scanner even though the line was present.
+
+  New emission (inside the `User-agent: *` stanza):
+
+  ```
+  User-agent: *
+  Content-Signal: ai-train=no, search=yes, ai-input=no
+  Allow: /
+  …
+  ```
+
+  No config changes required — existing `contentSignals: { … }` config values still drive the output.
+
 ## 0.1.0
 
 ### Minor Changes

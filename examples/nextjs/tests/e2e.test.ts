@@ -33,11 +33,11 @@ afterAll(() => {
 });
 
 describe('nextjs example e2e', () => {
-  it('/robots.txt passes RFC 9309 basic shape + Content-Signals header', async () => {
+  it('/robots.txt passes RFC 9309 basic shape + Content-Signal directive', async () => {
     const res = await fetch(`${BASE}/robots.txt`);
     expect(res.headers.get('content-type')).toMatch(/^text\/plain/);
     const body = await res.text();
-    expect(body).toMatch(/^# Content-Signals: ai-train=yes, search=yes, ai-input=yes$/m);
+    expect(body).toMatch(/^Content-Signal: ai-train=yes, search=yes, ai-input=yes$/m);
     expect(body).toMatch(/^User-agent: \*/m);
     expect(body).toMatch(/^Sitemap: /m);
   });
